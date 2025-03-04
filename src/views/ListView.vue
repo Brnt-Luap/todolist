@@ -4,20 +4,20 @@
     <nav class="border-gray-200">
         <div class="space-y-4 mx-auto flex flex-col items-center justify-center text-center">
             <div id="todo" class="flex items-center space-x-4">
-                <span class="text-4xl font-bold text-black leading-tight mb-1">To do</span>
-                <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
+                <span class="text-4xl font-bold text-black leading-tight">To do</span>
+                <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-1 px-2 rounded inline-flex items-center">
                     <span>+</span>
                 </button>
             </div>
             <p class="font-light italic">“ Life is like riding a bicycle. To keep your balance, you must keep moving. ” - Albert Einstein</p>
             <img src="../assets/thumbnail_image003 (3).jpg" alt="ToDo" class="rounded-lg mb-40 block mx-auto">
             <div id="doing" class="flex items-center space-x-4">
-                <span class="text-4xl font-bold text-black leading-tight mb-1">Doing</span>
+                <span class="text-4xl font-bold text-black leading-tight">Doing</span>
             </div>
             <p class="font-light italic">“ May the Force be with you. ” - Star Wars</p>
             <img src="../assets/thumbnail_image004.jpg" alt="Doing" class="rounded-lg mb-40 block mx-auto">
             <div>
-                <span class="text-4xl font-bold text-black leading-tight mb-1">Done</span>
+                <span class="text-4xl font-bold text-black leading-tight">Done</span>
             </div>
             <p class="font-light italic">“ It is good to have an end to journey toward, but it is the journey that matters in the end. ” - Ernest Hemingway</p>
             <img src="../assets/image001.jpg" alt="Done" class="rounded-lg mb-40 block mx-auto">
