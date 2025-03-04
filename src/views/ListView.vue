@@ -8,9 +8,9 @@
                 <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-1/2 px-1 rounded inline-flex items-center">
                     <span>+</span>
                 </button>
-                <p class="font-light italic mt-0">“ Life is like riding a bicycle. To keep your balance, you must keep moving. ” - Albert Einstein</p>
-            <img src="../assets/thumbnail_image003 (3).jpg" alt="ToDo" class="rounded-lg mb-10 block mx-auto">
             </div>
+            <p class="font-light italic mt-0">“ Life is like riding a bicycle. To keep your balance, you must keep moving. ” - Albert Einstein</p>
+            <img src="../assets/thumbnail_image003 (3).jpg" alt="ToDo" class="rounded-lg mb-10 block mx-auto">
             <div id="doing" class="flex items-center space-x-4">
                 <span class="text-4xl font-bold text-black leading-tight">Doing</span>
             </div>
