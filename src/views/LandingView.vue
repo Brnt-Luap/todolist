@@ -14,17 +14,17 @@
             <!-- Images avec message sous chaque -->
             <div class="flex justify-center space-x-8">
                 <div class="flex flex-col items-center">
-                  <router-link to="/list#todo"><img src="../assets/landing/todo.jpg" alt="ToDo" class="rounded-md"></router-link>
+                  <router-link to="/list#todo"><img src="@/assets/landing/todo.jpg" alt="ToDo" class="rounded-md"></router-link>
                     <p class="text-gray-700 font-medium font-bold leading-tight">To Do</p>
                     <p class="text-gray-700 font-small italic leading-tight">Where I dream to go !</p>
                 </div>
                 <div class="flex flex-col items-center">
-                  <router-link to="/list"><img src="../assets/landing/doing.jpg" alt="Doing" class="rounded-md"></router-link>
+                  <router-link to="/list#doing"><img src="../assets/landing/doing.jpg" alt="Doing" class="rounded-md"></router-link>
                     <p class="text-gray-700 font-bold font-medium leading-tight">Doing</p>
                     <p class="text-gray-700 font-small italic leading-tight">The dream that I am currently living !</p>
                 </div>
                 <div class="flex flex-col items-center">
-                  <router-link to="/list"><img src="../assets/landing/done.jpg" alt="Done" class="rounded-md"></router-link>
+                  <router-link to="/list#done"><img src="../assets/landing/done.jpg" alt="Done" class="rounded-md"></router-link>
                     <p class="text-gray-700 font-medium font-bold leading-tight">Done</p>
                     <p class="text-gray-700 font-small italic leading-tight">From dream to reality...</p>
                 </div>
