@@ -3,6 +3,9 @@
     <div class="max-w-screen-xl mx-auto bg-white">
     <nav class="border-gray-200">
         <div class="space-y-4 mx-auto flex flex-col items-center justify-center text-center">
+            <div>
+                <button>Test</button>
+            </div>
             <div id="todo">
                 <span class="text-4xl font-bold text-black block">To do</span>
                 <p class="mb-4 font-light mt-1 italic">“ Life is like riding a bicycle. To keep your balance, you must keep moving. ” - Albert Einstein</p>
