@@ -6,7 +6,7 @@
             <div class="flex flex-col items-center">
                 <div id="todo" class="flex items-center space-x-4">
                     <span class="text-4xl font-bold text-black leading-tight">To do</span>
-                    <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-1/2 px-1 rounded inline-flex items-center">
+                    <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-1/2 px-1 rounded inline-flex items-center" @click="toggleSideBar">
                         <span>+</span>
                     </button>
                 </div>
@@ -29,14 +29,30 @@
 
     </nav>
     </div>
+    <SideBar
+    v-if="showSideBar"
+    :toggle="toggleSideBar"
+    />
 </template>
 
 <script>
 import HeroHeader from '@/components/HeroHeader.vue'
+import SideBar from '@/components/SideBar.vue'
 export default {
   name: 'LandingView',
   components: {
-    HeroHeader
+    HeroHeader,
+    SideBar
+  },
+  data () {
+    return {
+      showSideBar: false
+    }
+  },
+  methods: {
+    toggleSideBar () {
+      this.showSideBar = !this.showSideBar
+    }
   }
 }
 </script>
