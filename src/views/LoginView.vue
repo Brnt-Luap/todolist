@@ -1,7 +1,26 @@
 <template>
-    <div class="" style="background-image: url('/todo_list/todolist/src/assets/background.png');">
-        <h1>This is an about page</h1>
-        <div class="">
-        </div>
+    <div>
+        <img :src="logo" alt="Logo"/>
+        <TopBar/>
+        <MainFooter/>
     </div>
 </template>
+
+<script>
+import TopBar from '@/components/TopBar.vue'
+import MainFooter from '@/components/MainFooter.vue'
+import logo from '@/assets/background.png'
+export default {
+  components: {
+    TopBar,
+    MainFooter
+  },
+  name: 'LoginBackground',
+  data () {
+    return {
+      logo
+    }
+  }
+}
+
+</script>
