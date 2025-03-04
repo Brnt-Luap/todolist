@@ -3,11 +3,6 @@
     <div class="max-w-screen-xl mx-auto bg-white">
     <nav class="border-gray-200">
         <div class="space-y-4 mx-auto flex flex-col items-center justify-center text-center">
-            <div>
-                <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
-                    <span>+</span>
-                </button>
-            </div>
             <div id="todo" class="flex items-center space-x-4">
                 <span class="text-4xl font-bold text-black">To do</span>
                 <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
@@ -17,7 +12,7 @@
             <p class="mb-4 font-light mt-1 italic">“ Life is like riding a bicycle. To keep your balance, you must keep moving. ” - Albert Einstein</p>
             <img src="../assets/thumbnail_image003 (3).jpg" alt="ToDo" class="rounded-lg mb-40 block mx-auto">
 
-            <div>
+            <div id="doing" class="flex items-center space-x-4">
                 <span class="text-4xl font-bold text-black block">Doing</span>
                 <p class="mb-4 font-light mt-1 italic">“ May the Force be with you. ” - Star Wars</p>
                 <img src="../assets/thumbnail_image004.jpg" alt="ToDo" class="rounded-lg mb-40 block mx-auto">
