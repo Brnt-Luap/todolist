@@ -28,6 +28,7 @@
                     <p class="text-gray-700 font-medium font-bold leading-tight">Done</p>
                     <p class="text-gray-700 font-small italic leading-tight">From dream to reality...</p>
                 </div>
+                
             </div>
         </div>
     </nav>
