@@ -2,10 +2,10 @@
 <HeroHeader/>
 <div class="bg-montreal p-8 rounded-md shadow-md">
   <div class="flex items-center space-x-4 p-4 bg-white/80 rounded-md shadow-lg backdrop-blur-sm">
-    <img src="../assets/profil/homme.jpg" alt="User" class="rounded-md w-52 h-52">
+    <img src="../assets/profil/lucie.jpg" alt="User" class="rounded-md w-52 h-52">
     <div>
-      <h2 class="text-lg font-semibold">Omar Benkacem</h2>
-      <p class="text-gray-600">omar.benkacem@email.com</p>
+      <h2 class="text-lg font-semibold">Lulu Castagnette</h2>
+      <p class="text-gray-600">lulu.castagnette@gmail.com</p>
       <p class="text-gray-700">🌍 15 Cities visited</p>
       <p class="text-gray-500">📅 Registered since 2022</p>
       <p><router-link to="/"><button type="button" class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Log out</button></router-link></p>
