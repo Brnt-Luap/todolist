@@ -10,7 +10,7 @@ const router = createRouter({
   history: createWebHistory(),
   routes: [
     {
-      path: '/',
+      path: '/home',
       name: 'home',
       component: HomeView
     },
@@ -25,7 +25,7 @@ const router = createRouter({
       component: LandingView
     },
     {
-      path: '/login',
+      path: '/',
       name: 'login',
       component: LoginView
     },
