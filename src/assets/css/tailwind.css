@@ -1,3 +1,8 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+.bg-montreal {
+    background-image: url('/src/assets/profil/montreal.jpg');
+    background-size: cover;
+    background-position: center;
+}
