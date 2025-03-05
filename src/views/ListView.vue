@@ -69,7 +69,7 @@
                     </div>
                     <div class="ms-2 text-sm">
                         <label for="helper-checkbox" class="font-medium text-black-900 dark:text-black-300">Beijing</label>
-                        <p id="helper-checkbox-text" class="text-xs font-normal text-gray-900 dark:text-gray-500">Happiness came upside down</p>
+                        <p id="helper-checkbox-text" class="text-xs font-normal text-gray-900 dark:text-gray-500">福“到”了</p>
                     </div>
                 </div>
                 <div class="flex mt-3">
@@ -78,7 +78,7 @@
                     </div>
                     <div class="ms-2 text-sm">
                         <label for="helper-checkbox" class="font-medium text-black-900 dark:text-black-300">Marrakech</label>
-                        <p id="helper-checkbox-text" class="text-xs font-normal text-gray-900 dark:text-gray-500">🐍</p>
+                        <p id="helper-checkbox-text" class="text-xs font-normal text-gray-900 dark:text-gray-500">🐍 Salam aleykoum</p>
                     </div>
                 </div>
             </div>

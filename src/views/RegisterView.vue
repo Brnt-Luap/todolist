@@ -3,8 +3,8 @@
     <TopBar/>
     <section class="bg-login bg-cover bg-center">
       <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-          <h1 class="flex items-center mb-6 text-2xl font-semibold text-white bg-black rounded-md p-2">Create your account</h1>
-          <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-white dark:border-gray-700">
+          <h1 class="flex items-center mb-6 text-2xl font-semibold text-white bg-black rounded-md p-2 dark:bg-black/60">Create your account</h1>
+          <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:border-gray-700 dark:bg-white/60">
               <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
                   <form class="space-y-4 md:space-y-6" action="#">
                       <div>
