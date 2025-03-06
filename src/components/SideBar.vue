@@ -8,24 +8,35 @@
                 <!-- Conteneur des boutons -->
                 <form >
                     <label for="input-group-1" class="ml-1 block text-sm font-medium text-gray-900 dark:text-black">Your Destination</label>
-                    <input type="text" id="input-group-1" class="mx-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md" placeholder="Enter your destination...">
+                    <input type="text" id="input-group-1" class="mx-1 mb-1 mt-1 block w-44 p-1 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 text-gray-900 dark:text-white bg-white dark:bg-gray-800" placeholder="Enter your destination..." autocomplete="off">
+                            <label for="statut" class="ml-1 block text-sm font-medium text-gray-900 dark:text-white"></label>
+                            <select id="statut" name="statut" class="mx-1 mb-1 mt-1 block w-44 p-1 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 text-gray-900 dark:text-white bg-white dark:bg-gray-800">
+                                <option value="" disabled selected>Choose the country</option>
+                                <option value="Chine">🇨🇳 Chine</option>
+                                <option value="France">🇫🇷 France</option>
+                                <option value="Maroc">🇲🇦 Maroc</option>
+                                <option value="Japon">🇯🇵 Japon</option>
+                                <option value="Grèce">🇬🇷 Grèce</option>
+                                <option value="Brésil">🇧🇷 Brésil</option>
+                                <option value="Argentine">🇦🇷 Argentine</option>
+                            </select>
                     <label for="input-group-1" class="ml-1 block text-sm font-medium text-gray-900 dark:text-black">Status</label>
                     <ul class="flex justify-center space-x-2 mt-4 items-center ml-2">
                         <li>
                             <input type="radio" id="toggle1" class="peer hidden" name="choice" value="toggle1"/>
-                            <label for="toggle1" class="focus:outline-none text-white bg-teal-200 hover:bg-teal-200 focus:ring-4 focus:ring-teal-200 font-medium rounded-lg text-sm px-5 py-2.5 mx-1/2 border peer-checked:border-black">
+                            <label for="toggle1" class="focus:outline-none text-white bg-red-400 hover:bg-red-500 focus:ring-4 focus:ring-teal-200 font-medium rounded-lg text-sm px-5 py-2.5 mx-1/2 border peer-checked:border-black">
                                 To Do
                             </label>
                         </li>
                         <li>
                             <input type="radio" id="toggle2" class="peer hidden" name="choice" value="toggle2"/>
-                            <label for="toggle2" class="focus:outline-none text-white bg-teal-300 hover:bg-teal-300 focus:ring-4 focus:ring-teal-300 font-medium rounded-lg text-sm px-5 py-2.5 border peer-checked:border-black">
+                            <label for="toggle2" class="focus:outline-none text-white bg-red-400 hover:bg-red-500 focus:ring-4 focus:ring-teal-300 font-medium rounded-lg text-sm px-5 py-2.5 border peer-checked:border-black">
                                 Doing
                             </label>
                         </li>
                         <li>
                             <input type="radio" id="toggle3" class="peer hidden" name="choice" value="toggle3"/>
-                            <label for="toggle3" class="focus:outline-none text-white bg-teal-400 hover:bg-teal-400 focus:ring-4 focus:ring-teal-400 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 border peer-checked:border-black">
+                            <label for="toggle3" class="focus:outline-none text-white bg-red-400 hover:bg-red-500 focus:ring-4 focus:ring-teal-400 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 border peer-checked:border-black">
                                 Done
                             </label>
                         </li>
