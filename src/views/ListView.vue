@@ -3,11 +3,13 @@
     <div class="max-w-screen-xl mx-auto bg-white">
     <nav class="border-gray-200">
         <div class="mx-auto flex flex-col items-center justify-center text-center">
-            <div class="flex flex-col items-center mt-10">
+            <!-- To Do Part -->
+            <div class="flex flex-col items-center mt-10" id="todo">
                 <div class="flex items-center space-x-4" id="todo">
                     <span class="text-4xl font-bold text-black leading-tight">To do</span>
-                    <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-1/3 px-1 rounded inline-flex items-center" @click="toggleSideBar">
-                        <span>+</span>
+                    <!-- Close SideBar button -->
+                    <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold rounded-full inline-flex items-center justify-center h-6 w-6" @click="toggleSideBar">
+                        <span class="text-lg">+</span>
                     </button>
                 </div>
                 <blockquote class="text-xl italic font-semibold text-gray-900 dark:text-black">
@@ -19,16 +21,19 @@
                 <div class="flex items-center space-x-100 p-4 bg-gray-300 shadow-md w-screen mt-5">
                   <img src="../assets/landing/todo2.jpg" alt="ToDo" class="rounded-lg mt-10 mb-10 block mx-auto">
                 </div>
-                <div class="flex mt-10">
+                <!-- Create task for each task in todo -->
+                <div v-for="task in task.todo" :key="task.id" class="flex items-center space-x-4 bg-green-100 p-4 rounded shadow-md mt-2">
                     <div class="flex items-center h-5">
-                        <input id="helper-checkbox" aria-describedby="helper-checkbox-text" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                        <input type="checkbox" @change="moveTask(task, 'todo')" class="w-4 h-4 text-blue-600">
                     </div>
                     <div class="ms-2 text-sm">
-                        <label for="helper-checkbox" class="font-medium text-black-900 dark:text-black-300">The moon</label>
-                        <p id="helper-checkbox-text" class="text-xs font-normal text-gray-900 dark:text-gray-500">Inshallah Akhy</p>
+                        <label class="font-medium text-black-900">{{ task.text }}</label>
+                        <p class="text-xs text-gray-900">{{ task.description }}</p>
                     </div>
+                    <button @click="deleteTask(task, 'todo')" class="text-red-500">✕</button>
                 </div>
             </div>
+            <!-- Doing Part -->
             <div class="flex flex-col items-center mt-10" id="doing">
                 <div id="doing" class="flex items-center space-x-4">
                     <span class="text-4xl font-bold text-black leading-tight">Doing</span>
@@ -42,16 +47,19 @@
                 <div class="flex items-center space-x-100 p-4 bg-gray-300 shadow-md w-screen">
                   <img src="../assets/landing/doing2.jpg" alt="Doing" class="rounded-lg mt-10 mb-10 block mx-auto h-1/2 w-1/2">
                 </div>
-                <div class="flex mt-10">
+                <!-- Create task for each task in doing -->
+                <div v-for="task in task.doing" :key="task.id" class="flex items-center space-x-4 bg-yellow-100 p-4 rounded shadow-md mt-2">
                     <div class="flex items-center h-5">
-                        <input id="helper-checkbox" aria-describedby="helper-checkbox-text" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                        <input type="checkbox" @change="moveTask(task, 'doing')" class="w-4 h-4 text-blue-600">
                     </div>
                     <div class="ms-2 text-sm">
-                        <label for="helper-checkbox" class="font-medium text-black-900 dark:text-black-300">Montréal</label>
-                        <p id="helper-checkbox-text" class="text-xs font-normal text-gray-900 dark:text-gray-500">For 3 months - studies - staying at EVO</p>
+                        <label class="font-medium text-black-900">{{ task.text }}</label>
+                        <p class="text-xs text-gray-900">{{ task.description }}</p>
                     </div>
+                    <button @click="deleteTask(task, 'doing')" class="text-red-500">✕</button>
                 </div>
             </div>
+            <!-- Done Part -->
             <div class="flex flex-col items-center mt-10" id="done">
                 <span class="text-4xl font-bold text-black leading-tight">Done</span>
                 <blockquote class="text-xl italic font-semibold text-gray-900 dark:text-black mb-5">
@@ -63,23 +71,17 @@
                 <div class="flex items-center space-x-100 p-4 bg-gray-300 shadow-md w-screen">
                   <img src="../assets/landing/done2.webp" alt="Done" class="rounded-lg mt-10 mb-10 block mx-auto">
                 </div>
-                <div class="flex mt-10">
+
+                <!-- Create task for each task in done -->
+                <div v-for="task in task.done" :key="task.id" class="flex items-center space-x-4 bg-red-100 p-4 rounded shadow-md mt-2">
                     <div class="flex items-center h-5">
-                        <input id="helper-checkbox" aria-describedby="helper-checkbox-text" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                        <input type="checkbox" @change="moveTask(task, 'done')" class="w-4 h-4 text-blue-600" checked>
                     </div>
                     <div class="ms-2 text-sm">
-                        <label for="helper-checkbox" class="font-medium text-black-900 dark:text-black-300">Beijing</label>
-                        <p id="helper-checkbox-text" class="text-xs font-normal text-gray-900 dark:text-gray-500">福“到”了</p>
+                        <label class="font-medium text-black-900">{{ task.text }}</label>
+                        <p class="text-xs text-gray-900">{{ task.description }}</p>
                     </div>
-                </div>
-                <div class="flex mt-3">
-                    <div class="flex items-center h-5">
-                        <input id="helper-checkbox" aria-describedby="helper-checkbox-text" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                    </div>
-                    <div class="ms-2 text-sm">
-                        <label for="helper-checkbox" class="font-medium text-black-900 dark:text-black-300">Marrakech</label>
-                        <p id="helper-checkbox-text" class="text-xs font-normal text-gray-900 dark:text-gray-500">🐍 Salam aleykoum</p>
-                    </div>
+                    <button @click="deleteTask(task, 'done')" class="text-red-500">✕</button>
                 </div>
             </div>
         </div>
@@ -95,6 +97,7 @@
 <script>
 import HeroHeader from '@/components/HeroHeader.vue'
 import SideBar from '@/components/SideBar.vue'
+
 export default {
   name: 'LandingView',
   components: {
@@ -103,12 +106,34 @@ export default {
   },
   data () {
     return {
-      showSideBar: false
+      showSideBar: false,
+      task: {
+        todo: [{ id: 1, text: 'The moon', description: 'Inshallah Akhy' }],
+        doing: [{ id: 2, text: 'Montréal', description: 'For 3 months - studies - staying at EVO' }],
+        done: [
+          { id: 3, text: 'Beijing', description: '福“到”了' },
+          { id: 4, text: 'Marrakech', description: '🐍 Salam aleykoum' }
+        ]
+      }
     }
   },
   methods: {
     toggleSideBar () {
       this.showSideBar = !this.showSideBar
+    },
+    moveTask (task, category) {
+      const categories = ['todo', 'doing', 'done']
+      const currentIndex = categories.indexOf(category)
+      if (currentIndex < categories.length - 1) {
+        const nextCategory = categories[currentIndex + 1]
+        // Supprimer la tâche de la catégorie actuelle
+        this.task[category] = this.task[category].filter(t => t.id !== task.id)
+        // Ajouter la tâche à la catégorie suivante
+        this.task[nextCategory].push(task)
+      }
+    },
+    deleteTask (task, category) {
+      this.task[category] = this.task[category].filter(t => t.id !== task.id)
     }
   }
 }
