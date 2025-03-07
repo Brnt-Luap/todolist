@@ -1,6 +1,8 @@
 <template>
     <router-view/>
-    <MainFooter/>
+    <div class="mt-2">
+      <MainFooter/>
+    </div>
     <SideBar
     v-if="showSideBar"
     :toggle="toggleSideBar"

@@ -6,7 +6,7 @@
                 <button class="ml-5 text-lg font-bold text-red-600" @click="toggle">X</button>
             </h1>
                 <!-- Buttons container -->
-                <form >
+                <form class="bg-gray-200">
                     <!-- City & Country area -->
                     <label for="Destination_City" class="ml-1 block text-sm font-medium text-gray-900 dark:text-black">Your Destination</label>
                         <!-- Text area for the city -->
@@ -73,7 +73,7 @@
                     <label for="input-group-1" class="ml-1 mt-1 block text-sm font-medium text-gray-900 dark:text-black">Your Comment</label>
                     <input type="text" id="Destination_City" class="mx-1 mb-1 block w-44 p-1 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 text-gray-900 dark:text-white bg-white dark:bg-gray-800" placeholder="Enter your comment..." autocomplete="off">
                     <div class="flex justify-center mt-2">
-                        <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+                        <button type="button" class="mb-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
                             Add to your list
                         </button>
                     </div>
