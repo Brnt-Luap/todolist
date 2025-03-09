@@ -97,6 +97,7 @@
 <script>
 import HeroHeader from '@/components/HeroHeader.vue'
 import SideBar from '@/components/SideBar.vue'
+import destinations from '@/destinations.json'
 
 export default {
   name: 'LandingView',
@@ -107,14 +108,7 @@ export default {
   data () {
     return {
       showSideBar: false,
-      task: {
-        todo: [{ id: 1, text: 'The moon', description: 'Inshallah Akhy' }],
-        doing: [{ id: 2, text: 'Montréal', description: 'For 3 months - studies - staying at EVO' }],
-        done: [
-          { id: 3, text: 'Beijing', description: '福“到”了' },
-          { id: 4, text: 'Marrakech', description: '🐍 Salam aleykoum' }
-        ]
-      }
+      task: destinations[0] // Load tasks from destinations.json
     }
   },
   methods: {
@@ -126,9 +120,9 @@ export default {
       const currentIndex = categories.indexOf(category)
       if (currentIndex < categories.length - 1) {
         const nextCategory = categories[currentIndex + 1]
-        // Supprimer la tâche de la catégorie actuelle
+        // Delete the task of the current category
         this.task[category] = this.task[category].filter(t => t.id !== task.id)
-        // Ajouter la tâche à la catégorie suivante
+        // Add the task at the next category
         this.task[nextCategory].push(task)
       }
     },
