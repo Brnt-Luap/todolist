@@ -1,14 +1,14 @@
 [
     {
       "todo": [
-        { "id": 1, "text": "The moon", "description": "Inshallah Akhy", "dateStart": "01/01/2026", "dateEnd": "31/12/2026" }
+        { "id": 1, "text": "The moon", "description": "Inshallah Akhy", "date": "01/01/2026 - 31/12/2026"}
       ],
       "doing": [
-        { "id": 2, "text": "Montréal", "description": "For 3 months - studies - staying at EVO", "dateStart": "26/01/2025", "dateEnd": "10/05/2025"  }
+        { "id": 2, "text": "Montréal", "description": "For 3 months - studies - staying at EVO", "dateStart": "26/01/2025 - 10/05/2025"}
       ],
       "done": [
-        { "id": 3, "text": "Beijing", "description": "福“到”了" },
-        { "id": 4, "text": "Marrakech", "description": "🐍 Salam aleykoum" }
+        { "id": 3, "text": "Beijing", "description": "福“到”了", "date":"01/01/2026 - 31/12/2026" },
+        { "id": 4, "text": "Marrakech", "description": "🐍 Salam aleykoum", "date":"01/01/2026 - 31/12/2026" }
       ]
     }
   ]
