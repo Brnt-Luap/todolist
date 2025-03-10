@@ -27,7 +27,7 @@
                         <input type="checkbox" @change="moveTask(task, 'todo')" class="w-4 h-4 text-blue-600">
                     </div>
                     <div class="ms-2 text-sm">
-                        <label class="font-medium text-black-900">{{ task.text }}</label>
+                        <label class="font-medium text-black-900">{{ task.city }}</label>
                         <p class="text-xs text-gray-900">{{ task.description }}</p>
                     </div>
                     <button @click="deleteTask(task, 'todo')" class="text-red-500">✕</button>
@@ -53,7 +53,7 @@
                         <input type="checkbox" @change="moveTask(task, 'doing')" class="w-4 h-4 text-blue-600">
                     </div>
                     <div class="ms-2 text-sm">
-                        <label class="font-medium text-black-900">{{ task.text }}</label>
+                        <label class="font-medium text-black-900">{{ task.city }}</label>
                         <p class="text-xs text-gray-900">{{ task.description }}</p>
                     </div>
                     <button @click="deleteTask(task, 'doing')" class="text-red-500">✕</button>
@@ -78,7 +78,7 @@
                         <input type="checkbox" @change="moveTask(task, 'done')" class="w-4 h-4 text-blue-600" checked>
                     </div>
                     <div class="ms-2 text-sm">
-                        <label class="font-medium text-black-900">{{ task.text }}</label>
+                        <label class="font-medium text-black-900">{{ task.city }}</label>
                         <p class="text-xs text-gray-900">{{ task.description }}</p>
                     </div>
                     <button @click="deleteTask(task, 'done')" class="text-red-500">✕</button>
