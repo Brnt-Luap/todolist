@@ -1,0 +1,14 @@
+[
+    {
+      "todo": [
+        { "id": 1, "city": "The moon", "description": "Inshallah Akhy", "date": "01/01/2026 - 31/12/2026", "rate":5}
+      ],
+      "doing": [
+        { "id": 2, "city": "Montréal", "description": "For 3 months - studies - staying at EVO", "dateStart": "26/01/2025 - 10/05/2025"}
+      ],
+      "done": [
+        { "id": 3, "city": "Beijing", "country":"China", "description": "福“到”了", "dateStart":"01/01/2026", "dateEnd":"31/12/2026", "rate":5, "place": "The Forbidden City - The Temple of Heaven - The Great Wall of China"},
+        { "id": 4, "city": "Marrakech", "country":"Morocco", "description": "🐍 Salam aleykoum", "dateStart":"01/01/2026", "dateEnd": "31/12/2026", "rate":4.5, "place":"Jemaa el-Fnaa - Saadian Tombs - Ben Youssef Madrasa" }
+      ]
+    }
+  ]
