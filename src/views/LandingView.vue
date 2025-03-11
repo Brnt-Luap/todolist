@@ -3,7 +3,6 @@
   <div class="max-w-screen-xl mx-auto bg-white">
     <nav class="border-gray-200">
         <div class="space-y-4">
-            <!-- Texte principal -->
             <div>
                 <span class="text-4xl font-bold text-black block flex justify-center mt-5">Travel To Do List</span>
                  <blockquote class="text-xl italic font-semibold text-gray-900 dark:text-black mb-10 mt-10">
@@ -16,7 +15,7 @@
             </div>
 
             <span class="mt-16 text-3xl font-bold text-black block">Your lists :</span>
-            <!-- Images avec message sous chaque -->
+            <!-- Clickable images + scroll to destination page -->
             <div class="flex justify-center space-x-8">
                 <div class="flex flex-col items-center">
                   <router-link to="/list#todo"><img src="@/assets/landing/todo.jpg" alt="ToDo" class="rounded-md"></router-link>

@@ -3,7 +3,7 @@
     <div class="max-w-screen-xl mx-auto bg-white">
     <nav class="border-gray-200">
         <div class="mx-auto flex flex-col items-center justify-center text-center">
-            <!-- To Do Part -->
+            <!-- TO DO PART -->
             <div class="flex flex-col items-center mt-10" id="todo">
                 <div class="flex items-center space-x-4" id="todo">
                     <span class="text-4xl font-bold text-black leading-tight">To do</span>
@@ -33,7 +33,7 @@
                     <button @click="deleteTask(task, 'todo')" class="text-red-500">✕</button>
                 </div>
             </div>
-            <!-- Doing Part -->
+            <!-- DOING PART -->
             <div class="flex flex-col items-center mt-10" id="doing">
                 <div id="doing" class="flex items-center space-x-4">
                     <span class="text-4xl font-bold text-black leading-tight">Doing</span>
@@ -59,7 +59,7 @@
                     <button @click="deleteTask(task, 'doing')" class="text-red-500">✕</button>
                 </div>
             </div>
-            <!-- Done Part -->
+            <!-- DONE PART -->
             <div class="flex flex-col items-center mt-10" id="done">
                 <span class="text-4xl font-bold text-black leading-tight">Done</span>
                 <blockquote class="text-xl italic font-semibold text-gray-900 dark:text-black mb-5">
