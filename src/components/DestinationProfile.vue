@@ -7,6 +7,8 @@
                 <p class="text-gray-700">Date: {{ item.dateStart }} - {{ item.dateEnd }}</p>
                 <div class="flex items-center">
                     <span v-for="(star, index) in generateStars(item.rate)" :key="index" v-html="star"></span>
+                    <span v-if="item.rate !== ''" class="ms-1 text-sm font-medium text-gray-500 dark:text-gray-400">{{item.rate}} out 5</span>
+                    <span v-else class="ms-1 text-sm font-medium text-gray-500 dark:text-gray-400">No note available</span>
                 </div>
             </div>
         </div>
