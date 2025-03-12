@@ -1,31 +1,38 @@
 <template>
-    <div v-for="item in destination.done" :key="item.id" class="flex items-center space-x-4 bg-white p-2 rounded">
-        <div class="flex items-center space-x-4 p-4 bg-gray-100 rounded-md shadow-md">
-          <!-- Display of flags -->
-            <img :src="getFlagImage(item.country)" alt="Flag" class="rounded-md w-[200px] h-[130px]">
-            <div>
-              <!-- Display of : city - country and dates -->
-                <h2 class="text-lg font-semibold">{{ item.city }} - {{ item.country }}</h2>
-                <p class="text-gray-700 font-medium dark:text-gray-700">Date:
-                  <span class="font-medium text-gray-600 dark:text-gray-600">
-                    {{ item.dateStart }} - {{ item.dateEnd }}
-                  </span>
-                  </p>
-                <!-- Display of place -->
-                <p class="text-gray-700 font-medium dark:text-gray-700">Place visited:
-                  <span class="font-medium text-gray-600 dark:text-gray-600">
-                    {{ item.place }}
-                  </span>
-                </p>
-                <div class="flex items-center">
-                  <!-- Display of the note -->
-                  <span v-for="(star, index) in generateStars(item.rate)" :key="index" v-html="star"></span>
-                  <span v-if="item.rate !== ''" class="ms-1 text-sm font-medium text-gray-500 dark:text-gray-400">{{item.rate}} out 5</span> <!-- If note available-->
-                  <span v-else class="ms-1 text-sm font-medium text-gray-500 dark:text-gray-400">No note available</span>                    <!-- Else -->
-                </div>
-            </div>
+  <div v-for="item in completedDestinations" :key="item.id" class="flex items-center space-x-4 bg-white p-2 rounded">
+    <div class="flex items-center space-x-4 p-4 bg-gray-100 rounded-md shadow-md">
+      <!-- Display of flags (only if country exists) -->
+      <img v-if="item.country" :src="getFlagImage(item.country)" alt="Flag" class="rounded-md w-[200px] h-[130px]">
+      <div>
+        <!-- Display of : city - country and dates -->
+        <h2 class="text-lg font-semibold">
+          {{ item.city }} <span v-if="item.country">- {{ item.country }}</span>
+        </h2>
+        <p class="text-gray-700 font-medium dark:text-gray-700">Date:
+          <span class="font-medium text-gray-600 dark:text-gray-600">
+            {{ item.dateStart ? item.dateStart + ' - ' + item.dateEnd : item.date }}
+          </span>
+        </p>
+        <!-- Display of place -->
+        <p v-if="item.place" class="text-gray-700 font-medium dark:text-gray-700">Place visited:
+          <span class="font-medium text-gray-600 dark:text-gray-600">
+            {{ item.place }}
+          </span>
+        </p>
+
+        <!-- Display of the note -->
+        <div class="flex items-center">
+          <span v-for="(star, index) in generateStars(item.rate)" :key="index" v-html="star"></span>
+          <span v-if="item.rate !== ''" class="ms-1 text-sm font-medium text-gray-500 dark:text-gray-400">
+            {{ item.rate }} out of 5
+          </span>
+          <span v-else class="ms-1 text-sm font-medium text-gray-500 dark:text-gray-400">
+            No note available
+          </span>
         </div>
+      </div>
     </div>
+  </div>
 </template>
 
 <script>
@@ -35,7 +42,13 @@ export default {
   name: 'LandingView',
   data () {
     return {
-      destination: destinations[0]
+      destinations
+    }
+  },
+  computed: {
+    completedDestinations () {
+      // Filter only destinations with status 'done'
+      return this.destinations.filter(item => item.status === 'done')
     }
   },
   methods: {
