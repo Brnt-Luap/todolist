@@ -1,7 +1,8 @@
 module.exports = (connex, Sequelize) => {
     const Destination = connex.define('destination', {
         id: {
-            type: Sequelize.REAL
+            type: Sequelize.REAL,
+            primaryKey: true
         },
         city: {
             type: Sequelize.STRING
@@ -26,7 +27,7 @@ module.exports = (connex, Sequelize) => {
         },
         place: {
             type: Sequelize.STRING
-        }
+        },
     })
     return Destination
 }
