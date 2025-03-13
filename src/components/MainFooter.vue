@@ -1,7 +1,15 @@
 <template>
     <footer class="w-full bg-gray-100 text-black border mt-1 p-4 flex flex-col items-center">
         <span class="text-md font-semibold text-gray-500 text-center">All Rights reserved @2025.</span>
-        <span class="text-md font-semibold text-gray-500 self-start mt-1">TripGoal.com</span>
+        <div class="sm:text-lg">
+                    <router-link to="/landing">
+                        <img
+                        src="@/assets/landing/pg.png"
+                        alt="TripGoal Logo"
+                        class="h-12 cursor-pointer rounded-md"
+                        />
+                    </router-link>
+                </div>
 
         <!-- Clickable Logo -->
         <div class="flex items-center self-start mt-1">

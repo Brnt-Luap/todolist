@@ -1,16 +1,20 @@
 <template>
-    <aside class="fixed overflow-hidden top-20 right-1 h-81 rounded-lg border border-black">
+    <aside class="fixed overflow-hidden top-20 right-1 h-full rounded-lg border border-black">
         <div class="relative h-full bg-gray-100 text-white">
-            <h1 class="flex justify-between text-justify items-center p-3 bg-gray-500 border-b border-white text-lg italic text-black">
+            <h1 class="flex justify-between text-justify items-center p-3 bg-white-500 border-b border-white text-lg text-black">
                 Add a destination
-                <button class="ml-5 text-lg font-bold text-red-600" @click="toggle">X</button>
+                <button class="ml-5 text-lg font-bold text-black-600" @click="toggle">
+                    <svg class="w-6 h-6 text-gray-800 dark:text-black" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h11m0 0-4-4m4 4-4 4m-5 3H3a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h3"/>
+                    </svg>
+                </button>
+
             </h1>
-                <!-- Buttons container -->
-                <form class="bg-gray-200" @submit.prevent="addDestination">
+            <form class="bg-white-200" @submit.prevent="addDestination">
                     <!-- City & Country area -->
-                    <label for="Destination_City" class="ml-1 block text-sm font-medium text-gray-900 dark:text-black">Your Destination</label>
+                    <label for="Destination_City" class="ml-1 block text-xl font-medium text-gray-900 dark:text-black mb-2 mt-2 text-center">Your Destination</label>
                         <!-- Text area for the city -->
-                        <input type="text" v-model="newDestination.city" class="mx-1 mb-1 block w-44 p-1 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 text-gray-900 dark:text-white bg-white dark:bg-gray-800" placeholder="Enter your city..." autocomplete="off">
+                        <input type="text" v-model="newDestination.city" class="mx-1 mb-1 block w-44 p-1 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 text-gray-900 dark:text-white bg-white dark:bg-white-800" placeholder="Enter your city..." autocomplete="off">
                         <!-- Button for the country -->
                         <select v-model="newDestination.country" name="statut" class="mx-1 mb-1block w-44 p-1 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 text-gray-900 dark:text-white bg-white dark:bg-gray-800">
                             <option value="" disabled selected class="text-gray-900 dark:text-black">Choose the country</option>
@@ -22,7 +26,8 @@
                                 <option value="Brazil">🇧🇷 Brazil</option>
                                 <option value="Argentina">🇦🇷 Argentina</option>
                             </select>
-                    <!-- Status area -->
+
+                <!-- Status area -->
                     <label for="Destination_Status" class="ml-1 block mt-1 text-sm font-medium text-gray-900 dark:text-black">Status</label>
                     <ul class="flex justify-center space-x-2 mt-2 items-center ml-1">
                         <!-- ToDo status button -->
@@ -47,45 +52,39 @@
                             </label>
                         </li>
                     </ul>
-                    <!-- Dates area -->
-                    <div id="date-range-picker" date-rangepicker class="flex flex-col items-start mt-3 ml-1">
-                        <label for="input-group-1" class="ml-1 block text-sm font-medium text-gray-900 dark:text-black">Dates</label>
-                        <!-- Start date -->
-                        <div class="relative w-44">
-                            <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                                <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                                    <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
-                                </svg>
-                            </div>
-                            <input id="datepicker-range-start" name="start" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date start">
-                        </div>
-                        <!-- End date -->
-                        <div class="relative w-44 mt-1">
-                            <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                                <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                                    <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
-                                </svg>
-                            </div>
-                            <input id="datepicker-range-end" name="end" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date end">
-                        </div>
-                    </div>
-                    <!-- Comment area -->
-                    <label for="input-group-1" class="ml-1 mt-1 block text-sm font-medium text-gray-900 dark:text-black">Your Comment</label>
+                    <!-- Dates -->
+                    <DatePicker
+                        v-model="dates"
+                        range
+                        autoApply
+                        model-type="yyyy-MM-dd"
+                        placeholder="Select the dates"
+                        class="mt-3 w-full"
+                    />
+                <!-- Comment -->
+                <label for="input-group-1" class="ml-1 mt-1 block text-sm font-medium text-gray-900 dark:text-black">Your Comment</label>
                     <input type="text" v-model="newDestination.comment" class="mx-1 mb-1 block w-44 p-1 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 text-gray-900 dark:text-white bg-white dark:bg-gray-800" placeholder="Enter your comment..." autocomplete="off">
-                    <!-- Submit button-->
-                    <div class="flex justify-center mt-2">
-                        <button type="submit" class="mb-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
-                            Add to your list
-                        </button>
-                    </div>
-                </form>
+                <!-- Message d'erreur -->
+                <p v-if="errorMessage" class="text-red-500 mt-2">{{ errorMessage }}</p>
+
+                <!-- Submit -->
+                <button type="submit" class="w-full mt-4 p-2 text-black bg-gray-400 rounded-md hover:bg-white ">
+                    Add
+                </button>
+
+                <!-- Message de succès -->
+                <p v-if="successMessage" class="text-green-500 mt-2">{{ successMessage }}</p>
+            </form>
         </div>
     </aside>
 </template>
-
 <script>
+import DatePicker from '@vuepic/vue-datepicker'
+import '@vuepic/vue-datepicker/dist/main.css'
+
 export default {
   props: ['toggle'],
+  components: { DatePicker },
   data () {
     return {
       newDestination: {
@@ -98,17 +97,37 @@ export default {
         todo: [],
         doing: [],
         done: []
-      }
+      },
+      dates: [],
+      errorMessage: '',
+      successMessage: ''
     }
   },
   methods: {
     addDestination () {
-      // if (!this.newDestination.city || !this.newDestination.country || !this.newDestination.status) {
-      // alert('Please fill all the fields!')
-      //  return
-      // }
-      this.destinations[this.newDestination.status].push({ ...this.newDestination })
-      this.newDestination = { city: '', country: '', status: '', comment: '' } // Reset form
+      // Vérification des champs
+      if (!this.newDestination.city || !this.newDestination.country || !this.newDestination.status || this.dates.length !== 2) {
+        this.errorMessage = 'Please fill all the fields, including the travel dates!'
+        return
+      }
+
+      // Ajout dans la bonne catégorie
+      this.destinations[this.newDestination.status].push({
+        ...this.newDestination,
+        startDate: this.dates[0],
+        endDate: this.dates[1]
+      })
+
+      // Affichage du message de succès
+      this.successMessage = 'Destination added successfully!'
+      this.errorMessage = ''
+
+      // Reset formulaire
+      this.newDestination = { city: '', country: '', status: '', comment: '' }
+      this.dates = []
+
+      // Effacer le message après 3 secondes
+      setTimeout(() => { this.successMessage = '' }, 3000)
     }
   }
 }
