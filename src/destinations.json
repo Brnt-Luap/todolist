@@ -4,7 +4,7 @@
         { "id": 1, "city": "The moon", "description": "Inshallah Akhy", "date": "01/01/2026 - 31/12/2026", "rate":5}
       ],
       "doing": [
-        { "id": 2, "city": "Montréal", "description": "For 3 months - studies - staying at EVO", "dateStart": "26/01/2025 - 10/05/2025"}
+        { "id": 2, "city": "Montréal", "country":"France", "description": "For 3 months - studies - staying at EVO", "dateStart": "26/01/2025 - 10/05/2025"}
       ],
       "done": [
         { "id": 3, "city": "Beijing", "country":"China", "description": "福“到”了", "dateStart":"01/01/2026", "dateEnd":"31/12/2026", "rate":5, "place": "The Forbidden City - The Temple of Heaven - The Great Wall of China"},
