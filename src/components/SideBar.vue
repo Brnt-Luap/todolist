@@ -14,13 +14,13 @@
                         <!-- Button for the country -->
                         <select v-model="newDestination.country" name="statut" class="mx-1 mb-1block w-44 p-1 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 text-gray-900 dark:text-white bg-white dark:bg-gray-800">
                             <option value="" disabled selected class="text-gray-900 dark:text-black">Choose the country</option>
-                                <option value="China">🇨🇳 China</option>
-                                <option value="France">🇫🇷 France</option>
-                                <option value="Morocco">🇲🇦 Morocco</option>
-                                <option value="Japan">🇯🇵 Japan</option>
-                                <option value="Greece">🇬🇷 Greece</option>
-                                <option value="Brazil">🇧🇷 Brazil</option>
-                                <option value="Argentina">🇦🇷 Argentina</option>
+                                <option value="China">China</option>
+                                <option value="France">France</option>
+                                <option value="Morocco">Morocco</option>
+                                <option value="Japan">Japan</option>
+                                <option value="Greece">Greece</option>
+                                <option value="Brazil">Brazil</option>
+                                <option value="Argentina">Argentina</option>
                             </select>
                     <!-- Status area -->
                     <label for="Destination_Status" class="ml-1 block mt-1 text-sm font-medium text-gray-900 dark:text-black">Status</label>

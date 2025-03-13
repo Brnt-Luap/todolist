@@ -98,8 +98,19 @@
 import HeroHeader from '@/components/HeroHeader.vue'
 import SideBar from '@/components/SideBar.vue'
 import destinations from '@/destinations.json'
+import DestinationDataService from '@/services/DestinationDataService'
 
 export default {
+  mounted () {
+    DestinationDataService.getAll()
+      .then(response => {
+        this.inventory = response.data
+        console.log(response.data)
+      })
+      .catch(error => {
+        console.error('Error fetching products:', error)
+      })
+  },
   name: 'LandingView',
   components: {
     HeroHeader,
