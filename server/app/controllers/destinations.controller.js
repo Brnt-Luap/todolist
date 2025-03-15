@@ -14,23 +14,18 @@ exports.findAll = (req, res) => {
     })
 }
 exports.create = (req, res) => {
-    // console.log(req.body)
-    if(!req.body.name){
+    console.log("Received data:", req.body); // Debugging line
+    if(!req.body.city){  // Change name to city
         res.status(400).send({
-            message: 'The name is mandatory'
-        })
-        return;
+            message: 'The city is mandatory'
+        });
+        return
     }
     Destination.create(req.body)
-    .then(data => {
-        res.send(data)
-    })
-    .catch(err => {
-        res.status(500).send({
-            message: 'Could not insert the data'
-        })
-    })
+    .then(data => res.send(data))
+    .catch(err => res.status(500).send({ message: 'Could not insert the data' }));
 }
+
 
 exports.findOne = (req, res) => {
     const id = req.params.id
