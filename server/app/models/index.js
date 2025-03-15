@@ -7,8 +7,8 @@ const connex = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
     operatorAliases: false
 })
 const db = {}
-db.Sequelize = Sequelize
-db.connex = connex
-db.destinations = require('./destinations.model.js')(connex, Sequelize)
-db.users = require('./user.model.js')(connex, Sequelize)
+    db.Sequelize = Sequelize
+    db.connex = connex
+    db.destinations = require('./destinations.model.js')(connex, Sequelize)
+    db.users = require('./user.model.js')(connex, Sequelize)
 module.exports = db
