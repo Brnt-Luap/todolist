@@ -1,10 +1,9 @@
 <template>
       <HeroHeader/>
-      <div class="bg-montreal p-8 rounded-md shadow-md">
-        <!-- Peut-être créer un composant pour cette partie -->
+      <div class="bg-montreal p-8 rounded-md shadow-md" style="padding-top: 120px;">
         <div class="flex items-center space-x-4 p-4 bg-white/80 rounded-md shadow-lg backdrop-blur-sm">
           <img src="../assets/profil/lucie.jpg" alt="User" class="rounded-md w-52 h-52">
-          <div>
+        <div>
             <h2 class="text-lg font-semibold">Lulu Castagnette</h2>
             <p class="text-gray-600">lulu.castagnette@gmail.com</p>
             <!-- Count the number of “Done” elements-->

@@ -1,5 +1,5 @@
 <template>
-    <header class="bg-gray-100 text-black border">
+    <header class="bg-gray-100 text-black border fixed top-0 left-0 w-full z-50">
         <section class="rounded-lg">
             <div class="py-4 px-4 mx-auto lg:py-4 lg:px-4 flex justify-between items-center">
                 <div class="sm:text-lg">
