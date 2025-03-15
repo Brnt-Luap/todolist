@@ -14,12 +14,12 @@ app.use(cors(corsOption))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:true}))
 
-const db = require('./app/models')
-db.connex.sync()
-
-require('./app/routes/user.route')(app)
-
 const PORT = 8080
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}.`)
+
+const db = require('./app/models')
+db.connex.sync()
+require('./app/routes/user.route')(app)
+require('./app/routes/destination.route')(app)
 })
