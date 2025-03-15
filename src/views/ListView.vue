@@ -1,6 +1,6 @@
 <template>
     <HeroHeader/>
-    <div class="max-w-screen-xl mx-auto bg-white">
+    <div class="max-w-screen-xl mx-auto bg-white pt-32">
     <nav class="border-gray-200">
         <div class="mx-auto flex flex-col items-center justify-center text-center">
             <!-- TO DO PART -->
