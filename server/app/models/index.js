@@ -9,6 +9,6 @@ const connex = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
 const db = {}
 db.Sequelize = Sequelize
 db.connex = connex
-db.products = require('./destinations.model.js')(connex, Sequelize)
+db.destinations = require('./destinations.model.js')(connex, Sequelize)
 db.users = require('./user.model.js')(connex, Sequelize)
 module.exports = db
