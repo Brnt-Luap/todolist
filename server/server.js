@@ -22,7 +22,6 @@ app.use(bodyParser.urlencoded({extended:true}))
 const db = require('./app/models')
 db.connex.sync()
 
-require('./app/routes/product.route')(app)
 require('./app/routes/user.route')(app)
 
 const PORT = 8080

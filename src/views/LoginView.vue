@@ -18,7 +18,7 @@
                             <input type="password" name="password" id="password" placeholder="Enter your password" class="bg-white border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-white dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500" required="" v-model="user.password">
                         </div>
                         <div class="flex items-center space-x-4">
-                            <button type="submit" @click="login" class="text-black bg-gray-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-gray-300 dark:hover:bg-black dark:hover:text-white dark:focus:ring-primary-800">
+                            <button type="button" @click="login" class="text-black bg-gray-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-gray-300 dark:hover:bg-black dark:hover:text-white dark:focus:ring-primary-800">
                                 Sign In
                             </button>
                           <router-link to="/register">
@@ -54,23 +54,7 @@ export default {
     }
   },
   methods: {
-    validateEmail (email) {
-      const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/ // Basic email regex
-      return regex.test(email)
-    },
     login () {
-      // Reset error message
-      this.emailError = ''
-      // Validate email
-      if (!this.user.email) {
-        this.emailError = 'Email is required.'
-        return
-      }
-      if (!this.validateEmail(this.user.email)) {
-        this.emailError = 'Please enter a valid email address.'
-        return
-      }
-
       UserDataService.postLogin(this.user)
         .then(response => {
           // console.log(response.data)
