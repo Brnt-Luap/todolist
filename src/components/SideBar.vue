@@ -84,6 +84,7 @@
 </template>
 
 <script>
+import DestinationDataService from '@/services/DestinationDataService'
 export default {
   props: ['toggle'],
   data () {
