@@ -1,10 +1,6 @@
 module.exports = app => {
     const destination = require('../controllers/destinations.controller.js');
     const router = require('express').Router();
-
-    if (!destination.findAll) {
-        console.error("findAll function is missing in destinations.controller.js");
-    }
     
     // Define routes
     router.get('/', destination.findAll);     // Get all destinations
