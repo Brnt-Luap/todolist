@@ -11,4 +11,8 @@ const db = {}
     db.connex = connex
     db.destinations = require('./destinations.model.js')(connex, Sequelize)
     db.users = require('./user.model.js')(connex, Sequelize)
+
+    db.users.hasMany(db.destinations)
+    db.destinations.belongsTo(db.users)
+
 module.exports = db
