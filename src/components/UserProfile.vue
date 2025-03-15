@@ -1,6 +1,7 @@
 <template>
   <div v-for="item in users" :key="item.id" class="flex items-center space-x-4 p-4 bg-white/80 rounded-md shadow-lg backdrop-blur-sm">
         <div>
+          <img src="../assets/users/Lulu Castagnette.jpg" alt="User" class="rounded-md w-52 h-52">
           <h2 class="text-lg font-semibold">{{item.username}}</h2>
           <p class="text-gray-600 mt-1/2">{{item.email}}</p>
           <!-- Count the number of “Done” elements-->
