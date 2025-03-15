@@ -97,42 +97,60 @@
 <script>
 import HeroHeader from '@/components/HeroHeader.vue'
 import SideBar from '@/components/SideBar.vue'
-import destinations from '@/destinations.json'
+import DestinationDataService from '@/services/DestinationDataService'
 
 export default {
   name: 'LandingView',
-  components: {
-    HeroHeader,
-    SideBar
-  },
+  components: { HeroHeader, SideBar },
   data () {
     return {
       showSideBar: false,
       task: {
-        todo: destinations.filter(d => d.status === 'todo'),
-        doing: destinations.filter(d => d.status === 'doing'),
-        done: destinations.filter(d => d.status === 'done')
+        todo: [],
+        doing: [],
+        done: []
       }
     }
+  },
+  mounted () {
+    this.fetchTasks()
   },
   methods: {
     toggleSideBar () {
       this.showSideBar = !this.showSideBar
+    },
+    fetchTasks () {
+      DestinationDataService.getAll()
+        .then(response => {
+          this.task.todo = response.data.filter(d => d.status === 'todo')
+          this.task.doing = response.data.filter(d => d.status === 'doing')
+          this.task.done = response.data.filter(d => d.status === 'done')
+        })
+        .catch(error => {
+          console.error('Error fetching tasks:', error)
+        })
     },
     moveTask (task, currentCategory) {
       const categories = ['todo', 'doing', 'done']
       const currentIndex = categories.indexOf(currentCategory)
       if (currentIndex < categories.length - 1) {
         const nextCategory = categories[currentIndex + 1]
-        // Supprime la tâche de la catégorie actuelle
         this.task[currentCategory] = this.task[currentCategory].filter(t => t.id !== task.id)
-        // Change le statut et ajoute la tâche dans la catégorie suivante
         task.status = nextCategory
         this.task[nextCategory].push(task)
+        this.updateTaskStatus(task)
       }
+    },
+    updateTaskStatus (task) {
+      DestinationDataService.update(task.id, task)
+        .then(() => console.log('Task updated'))
+        .catch(error => console.error('Error updating task:', error))
     },
     deleteTask (task, category) {
       this.task[category] = this.task[category].filter(t => t.id !== task.id)
+      DestinationDataService.delete(task.id)
+        .then(() => console.log('Task deleted'))
+        .catch(error => console.error('Error deleting task:', error))
     }
   }
 }
