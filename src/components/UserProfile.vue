@@ -1,6 +1,5 @@
 <template>
   <div v-for="item in users" :key="item.id" class="flex items-center space-x-4 p-4 bg-white/80 rounded-md shadow-lg backdrop-blur-sm">
-      <img :src="getUserImage(item.username)" alt="User" class="rounded-md w-52 h-52">
         <div>
           <h2 class="text-lg font-semibold">{{item.username}}</h2>
           <p class="text-gray-600 mt-1/2">{{item.email}}</p>
@@ -13,26 +12,30 @@
 </template>
 
 <script>
-import destinations from '@/destinations.json'
+import DestinationDataService from '@/services/DestinationDataService'
 import users from '@/users.json'
 
 export default {
   name: 'LandingView',
   data () {
     return {
-      task: destinations,
-      users: users
+      users: users,
+      destinations: [] // Stocker les données récupérées
     }
   },
   computed: {
     doneCount () {
-      return this.task.filter(item => item.status === 'done').length
+      return this.destinations.filter(item => item.status === 'done').length
     }
   },
-  methods: {
-    getUserImage (user) {
-      return require(`@/assets/users/${user}.jpg`)
-    }
+  created () {
+    DestinationDataService.getAll()
+      .then(response => {
+        this.destinations = response.data
+      })
+      .catch(error => {
+        console.error('Erreur lors de la récupération des destinations:', error)
+      })
   }
 }
 </script>

@@ -36,18 +36,17 @@
 </template>
 
 <script>
-import destinations from '@/destinations.json'
+import DestinationDataService from '@/services/DestinationDataService'
 
 export default {
   name: 'LandingView',
   data () {
     return {
-      destinations
+      destinations: []
     }
   },
   computed: {
     completedDestinations () {
-      // Filter only destinations with status 'done'
       return this.destinations.filter(item => item.status === 'done')
     }
   },
@@ -81,6 +80,15 @@ export default {
       }
       return stars
     }
+  },
+  created () {
+    DestinationDataService.getAll()
+      .then(response => {
+        this.destinations = response.data
+      })
+      .catch(error => {
+        console.error('Erreur lors de la récupération des destinations:', error)
+      })
   }
 }
 </script>
