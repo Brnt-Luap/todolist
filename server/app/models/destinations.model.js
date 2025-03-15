@@ -29,7 +29,7 @@ module.exports = (connex, Sequelize) => {
             defaultValue: 'pending'  // Optional: Default status
         },
         rate: {
-            type: Sequelize.INTEGER,  // Changed from REAL to INTEGER (ratings are usually whole numbers)
+            type: Sequelize.FLOAT,  // Changed from REAL to INTEGER (ratings are usually whole numbers)
             validate: { min: 1, max: 5 }  // Optional: Ensure rating is between 1-5
         },
         place: {
