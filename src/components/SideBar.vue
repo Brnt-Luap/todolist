@@ -89,16 +89,16 @@ export default {
   props: ['toggle'],
   data () {
     return {
-      newDestination: {
+      Destination: {
         city: '',
         country: '',
+        dateStart: '',
+        dateEnd: '',
         status: '',
-        comment: ''
-      },
-      destinations: {
-        todo: [],
-        doing: [],
-        done: []
+        description: '',
+        rate: '',
+        place: '',
+        user: ''
       }
     }
   },
