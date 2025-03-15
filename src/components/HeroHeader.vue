@@ -3,7 +3,13 @@
         <section class="rounded-lg">
             <div class="py-4 px-4 mx-auto lg:py-4 lg:px-4 flex justify-between items-center">
                 <div class="sm:text-lg">
-                    <h2 class="text-4xl tracking-tight">TripGoal.com</h2>
+                    <router-link to="/landing">
+                        <img
+                        src="@/assets/landing/pg-logo.jpg"
+                        alt="TripGoal Logo"
+                        class="h-12 cursor-pointer border-2 border-black rounded-md transition-transform duration-300 hover:scale-110"
+                        />
+                    </router-link>
                 </div>
 
                 <!-- Conteneur flex pour aligner les boutons -->
