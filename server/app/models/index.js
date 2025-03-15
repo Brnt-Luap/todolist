@@ -1,13 +1,14 @@
 const dbConfig = require('../config/db.config.js')
 const Sequelize = require('sequelize')
 const connex = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
-    host:dbConfig.HOST,
+    host: dbConfig.HOST,
     dialect: dbConfig.dialect,
     port: 3306,
     operatorAliases: false
 })
+
 const db = {}
-db.Sequelize = Sequelize
-db.connex = connex
-db.products = require('./destinations.model.js')(connex, Sequelize)
+    db.Sequelize = Sequelize
+    db.connex = connex
+    db.destinations = require('./destinations.model.js')(connex, Sequelize)
 module.exports = db
