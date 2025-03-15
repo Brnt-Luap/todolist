@@ -1,6 +1,6 @@
 <template>
       <HeroHeader/>
-      <div class="bg-montreal p-8 rounded-md shadow-md">
+      <div class="mt-20 bg-montreal p-8 rounded-md shadow-md">
         <!-- Peut-être créer un composant pour cette partie -->
          <UserProfile/>
       </div>
