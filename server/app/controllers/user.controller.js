@@ -1,17 +1,8 @@
 const db = require('../models')
-const userModel = require('../models/user.model')
+const User = db.users
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
-const User = db.users
-//const OP = db.Sequelize.Op
 const https = require('http')
-
-exports.findAll = (req, res) => {
-    User.findAll()
-    .then(data => {
-        res.send(data)
-    })
-}
 
 exports.create = async (req, res) => {
     if (!req.body.fullname || !req.body.email || !req.body.password) {
