@@ -98,6 +98,7 @@
 import HeroHeader from '@/components/HeroHeader.vue'
 import SideBar from '@/components/SideBar.vue'
 import DestinationDataService from '@/services/DestinationDataService'
+import { mapState } from 'vuex'
 
 export default {
   name: 'LandingView',
@@ -112,19 +113,37 @@ export default {
       }
     }
   },
-  mounted () {
-    this.fetchTasks()
+  computed: {
+    ...mapState(['user']), // Récupère l'utilisateur connecté depuis Vuex
+    loggedInUser () {
+      return this.user // Simplifie l'accès aux données de l'utilisateur
+    }
+  },
+  watch: {
+    loggedInUser: {
+      immediate: true,
+      handler () {
+        if (this.loggedInUser) {
+          this.fetchTasks() // Rafraîchir les tâches dès qu'on a l'utilisateur
+        }
+      }
+    }
   },
   methods: {
     toggleSideBar () {
       this.showSideBar = !this.showSideBar
     },
     fetchTasks () {
+      if (!this.loggedInUser) return // S'assure qu'on a un utilisateur connecté
+
       DestinationDataService.getAll()
         .then(response => {
-          this.task.todo = response.data.filter(d => d.status === 'todo')
-          this.task.doing = response.data.filter(d => d.status === 'doing')
-          this.task.done = response.data.filter(d => d.status === 'done')
+          // Filtre les tâches pour ne garder que celles créées par l'utilisateur connecté
+          const userTasks = response.data.filter(d => d.userId === this.loggedInUser.id)
+
+          this.task.todo = userTasks.filter(d => d.status === 'todo')
+          this.task.doing = userTasks.filter(d => d.status === 'doing')
+          this.task.done = userTasks.filter(d => d.status === 'done')
         })
         .catch(error => {
           console.error('Error fetching tasks:', error)
