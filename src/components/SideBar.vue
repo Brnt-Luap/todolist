@@ -127,7 +127,9 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import DestinationDataService from '@/services/DestinationDataService'
+
 export default {
   props: ['toggle'],
   data () {
@@ -138,33 +140,48 @@ export default {
         dateStart: '',
         dateEnd: '',
         status: '',
-        description: ''
+        description: '',
+        userId: null // Ajout de l'ID utilisateur
       }
     }
   },
+  computed: {
+    ...mapState(['user']), // Get the logged-in user from Vuex
+    loggedInUser () {
+      return this.user // Vuex state contains the authenticated user
+    }
+  },
   methods: {
-    addDestination () {
-      // if (!this.newDestination.city || !this.newDestination.country || !this.newDestination.status) {
-      // alert('Please fill all the fields!')
-      //  return
-      // }
-      this.destinations[this.newDestination.status].push({ ...this.newDestination })
-      this.newDestination = { city: '', country: '', status: '', comment: '' } // Reset form
-    },
     saveDestination () {
+      if (!this.user || !this.user.id) {
+        console.error("Utilisateur non connecté. Impossible d'ajouter la destination.")
+        alert('Vous devez être connecté pour ajouter une destination.')
+        return
+      }
+
+      this.Destination.userId = this.user.id // Associer l'ID utilisateur
+
       DestinationDataService.create(this.Destination)
-        .catch(error => {
-          if (error.response) {
-            // Server responded with a status code outside 2xx
-            this.message = error.response.data.message || 'An error occurred. Please try again.'
-          } else if (error.request) {
-            // Request was made but no response was received
-            this.message = 'No response from the server. Please check your connection.'
-          } else {
-            // Something happened in setting up the request
-            this.message = 'An unexpected error occurred. Please try again.'
-          }
+        .then(response => {
+          console.log('Destination ajoutée avec succès:', response.data)
+          this.$emit('destinationAdded', response.data) // Éventuel rafraîchissement
+          this.resetForm()
         })
+        .catch(error => {
+          console.error("Erreur lors de l'ajout de la destination:", error)
+          this.message = error.response?.data?.message || 'Une erreur est survenue. Veuillez réessayer.'
+        })
+    },
+    resetForm () {
+      this.Destination = {
+        city: '',
+        country: '',
+        dateStart: '',
+        dateEnd: '',
+        status: '',
+        description: '',
+        userId: null
+      }
     }
   }
 }
