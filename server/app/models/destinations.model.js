@@ -34,9 +34,6 @@ module.exports = (connex, Sequelize) => {
         },
         place: {
             type: Sequelize.STRING
-        },
-        user: {
-            type: Sequelize.STRING
         }
     }, 
     {
