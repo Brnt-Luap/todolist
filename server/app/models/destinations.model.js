@@ -35,9 +35,6 @@ module.exports = (connex, Sequelize) => {
         place: {
             type: Sequelize.STRING
         },
-        user: {
-            type: Sequelize.STRING
-        }
     }, 
     {
         timestamps: true  // Ensures createdAt and updatedAt are included
