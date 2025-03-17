@@ -10,7 +10,7 @@
         </h2>
         <p class="text-gray-700 font-medium">Date:
           <span class="font-medium text-gray-600">
-            {{ item.dateStart ? item.dateStart + ' - ' + item.dateEnd : item.date }}
+            {{ item.dateStart ? item.dateStart + ' | ' + item.dateEnd : item.date }}
           </span>
         </p>
 
