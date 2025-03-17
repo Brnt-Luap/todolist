@@ -1,10 +1,10 @@
 <template>
   <div v-for="item in completedDestinations" :key="item.id" class="flex items-center space-x-4 bg-white p-2 rounded">
     <div class="flex items-center space-x-4 p-4 bg-gray-100 rounded-md shadow-md">
-      <!-- Display flag if the country exists -->
+      <!-- Affichage du drapeau si le pays est défini -->
       <img v-if="item.country" :src="getFlagImage(item.country)" alt="Flag" class="rounded-md w-[200px] h-[130px]">
       <div>
-        <!-- Display city, country, and dates -->
+        <!-- Affichage de la ville, du pays et des dates -->
         <h2 class="text-lg font-semibold">
           {{ item.city }} <span v-if="item.country">- {{ item.country }}</span>
         </h2>
@@ -14,7 +14,7 @@
           </span>
         </p>
 
-        <!-- Editable section for places visited -->
+        <!-- Section modifiable des lieux visités -->
         <p class="text-gray-700 font-medium">Places visited:
           <span v-if="!item.editingPlace">
             {{ item.place }}
@@ -31,7 +31,7 @@
           </span>
         </p>
 
-        <!-- Rating section -->
+        <!-- Section notation -->
         <div class="flex items-center">
           <span v-if="!item.editingRate">
             <div class="flex items-center space-x-1">
@@ -58,32 +58,38 @@
 
 <script>
 import DestinationDataService from '@/services/DestinationDataService'
+import { mapState } from 'vuex'
 
 export default {
-  name: 'LandingView',
+  name: 'CompletedDestinations',
   data () {
     return {
       destinations: []
     }
   },
   computed: {
+    ...mapState(['user']), // Récupère l'utilisateur connecté depuis Vuex
+    loggedInUser () {
+      return this.user
+    },
     completedDestinations () {
-      return this.destinations.filter(item => item.status === 'done')
+      return this.destinations.filter(item =>
+        item.status === 'done' && item.userId === this.loggedInUser?.id
+      )
     }
   },
   methods: {
-    // Get flag image based on the country
     getFlagImage (country) {
       return require(`@/assets/flags/${country}.png`)
     },
-    // Generate star rating
     generateStars (rate) {
       const fullStar = '<svg class="w-4 h-4 text-yellow-300" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20"><path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/></svg>'
-      const halfStar = '<svg class="w-4 h-4 text-yellow-300" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20"><defs><linearGradient id="half-grad"><stop offset="50%" stop-color="currentColor"/><stop offset="50%" stop-color="lightgray"/></linearGradient></defs><path fill="url(#half-grad)" d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/></svg>'
+      const halfStar = '<svg class="w-4 h-4 text-yellow-300" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20"><defs><linearGradient id="half-grad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="50%" stop-color="#fbbf24"/><stop offset="50%" stop-color="#d1d5db"/></linearGradient></defs><path fill="url(#half-grad)" d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/></svg>'
       const emptyStar = '<svg class="w-4 h-4 text-gray-300" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20"><path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/></svg>'
+      const stars = []
       const fullStars = Math.floor(rate)
       const hasHalfStar = rate % 1 !== 0
-      const stars = []
+
       for (let i = 0; i < fullStars; i++) {
         stars.push(fullStar)
       }
@@ -95,17 +101,14 @@ export default {
       }
       return stars
     },
-    // Save new place
     savePlace (item) {
       item.place = item.newPlace
       item.editingPlace = false
       this.updateDestination(item)
     },
-    // Update rating
     updateRate (item) {
       this.updateDestination(item)
     },
-    // Update destination data
     updateDestination (item) {
       DestinationDataService.update(item.id, item)
         .then(() => {
@@ -114,22 +117,26 @@ export default {
         .catch(error => {
           console.error('Error updating destination:', error)
         })
+    },
+    fetchDestinations () {
+      if (!this.loggedInUser) return console.warn('Utilisateur non connecté')
+
+      DestinationDataService.getAll()
+        .then(response => {
+          this.destinations = response.data.filter(d => d.userId === this.loggedInUser.id)
+        })
+        .catch(error => console.error('Erreur lors du chargement des destinations:', error))
     }
   },
-  // Fetch destinations on component creation
-  created () {
-    DestinationDataService.getAll()
-      .then(response => {
-        this.destinations = response.data.map(item => ({
-          ...item,
-          newPlace: item.place || '',
-          editingPlace: false,
-          editingRate: false
-        }))
-      })
-      .catch(error => {
-        console.error('Error fetching destinations:', error)
-      })
+  watch: {
+    loggedInUser: {
+      immediate: true,
+      handler () {
+        if (this.loggedInUser) {
+          this.fetchDestinations()
+        }
+      }
+    }
   }
 }
 </script>

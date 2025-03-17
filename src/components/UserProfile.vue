@@ -32,7 +32,8 @@ export default {
       return this.user // Vuex state contains the authenticated user
     },
     doneCount () {
-      return this.destinations.filter(item => item.status === 'done').length
+      if (!this.loggedInUser) return 0
+      return this.destinations.filter(item => item.status === 'done' && item.userId === this.loggedInUser.id).length
     },
     registrationYear () {
       if (this.loggedInUser && this.loggedInUser.createdAt) {
