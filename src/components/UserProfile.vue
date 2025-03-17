@@ -1,6 +1,6 @@
 <template>
   <div v-if="loggedInUser" class="flex items-center space-x-4 p-4 bg-white/80 rounded-md shadow-lg backdrop-blur-sm">
-    <img :src="getUserImage(loggedInUser)" alt="User" class="rounded-md w-52 h-52">
+    <img src="../assets/users/avatar.png" alt="User" class="rounded-md w-52 h-52">
     <div>
       <h2 class="text-lg font-semibold">{{ loggedInUser.fullname }}</h2>
       <p class="text-gray-600 mt-1/2">{{ loggedInUser.email }}</p>
