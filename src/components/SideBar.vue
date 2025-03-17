@@ -10,9 +10,9 @@
                     <!-- City & Country area -->
                     <label for="Destination_City" class="ml-1 block text-sm font-medium text-gray-900 dark:text-black">Your Destination</label>
                         <!-- Text area for the city -->
-                        <input type="text" v-model="Destination.city" class="mx-1 mb-1 block w-44 p-1 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 text-gray-900 dark:text-white bg-white dark:bg-gray-800" placeholder="Enter your city..." autocomplete="off">
+                        <input type="text" v-model="Destination.city" class="mx-1 mb-1 block w-44 p-1 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 text-gray-900 dark:text-white bg-white dark:bg-gray-800" placeholder="Enter your city..." autocomplete="off" required>
                         <!-- Button for the country -->
-                        <select v-model="Destination.country" name="statut" class="mx-1 mb-1block w-44 p-1 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 text-gray-900 dark:text-white bg-white dark:bg-gray-800">
+                        <select v-model="Destination.country" name="statut" class="mx-1 mb-1block w-44 p-1 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 text-gray-900 dark:text-white bg-white dark:bg-gray-800" required>
                             <option value="" disabled selected class="text-gray-900 dark:text-black">Choose the country</option>
                             <option value="Afghanistan">Afghanistan</option>
                             <option value="Albania">Albania</option>
@@ -101,7 +101,7 @@
                             </svg>
                           </div>
                           <input v-model="Destination.dateStart" id="datepicker-range-start" name="start" type="date" lang="en"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
                         </div>
 
                         <!-- End date -->
@@ -112,7 +112,7 @@
                             </svg>
                           </div>
                           <input v-model="Destination.dateEnd" id="datepicker-range-end" name="end" type="date" lang="en"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
                         </div>
 
                     </div>
@@ -145,7 +145,7 @@ export default {
         dateEnd: '',
         status: '',
         description: '',
-        userId: null // Ajout de l'ID utilisateur
+        userId: null // Add of userId
       }
     }
   },
@@ -158,22 +158,21 @@ export default {
   methods: {
     saveDestination () {
       if (!this.user || !this.user.id) {
-        console.error("Utilisateur non connecté. Impossible d'ajouter la destination.")
-        alert('Vous devez être connecté pour ajouter une destination.')
+        console.error('User not logged in. Unable to add destination.')
+        alert('You must be logged in to add a destination.')
         return
       }
 
-      this.Destination.userId = this.user.id // Associer l'ID utilisateur
+      this.Destination.userId = this.user.id
 
       DestinationDataService.create(this.Destination)
         .then(response => {
-          console.log('Destination ajoutée avec succès:', response.data)
-          this.$emit('destinationAdded', response.data) // Éventuel rafraîchissement
+          console.log('Destination successfully added.', response.data)
           this.resetForm()
         })
         .catch(error => {
-          console.error("Erreur lors de l'ajout de la destination:", error)
-          this.message = error.response?.data?.message || 'Une erreur est survenue. Veuillez réessayer.'
+          console.error('Error adding destination', error)
+          this.message = error.response?.data?.message || 'An error has occurred. Please try again.'
         })
     },
     resetForm () {
