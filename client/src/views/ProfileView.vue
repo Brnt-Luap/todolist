@@ -12,7 +12,6 @@
 import DestinationProfile from '@/components/DestinationProfile.vue'
 import HeroHeader from '@/components/HeroHeader.vue'
 import UserProfile from '@/components/UserProfile.vue'
-import destinations from '@/destinations.json'
 
 export default {
   name: 'LandingView',
@@ -20,16 +19,6 @@ export default {
     HeroHeader,
     DestinationProfile,
     UserProfile
-  },
-  data () {
-    return {
-      task: destinations
-    }
-  },
-  computed: {
-    doneCount () {
-      return this.task.length > 0 ? this.task[0].done.length : 0
-    }
   }
 }
 </script>
