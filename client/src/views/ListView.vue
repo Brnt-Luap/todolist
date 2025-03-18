@@ -114,9 +114,9 @@ export default {
     }
   },
   computed: {
-    ...mapState(['user']), // Récupère l'utilisateur connecté depuis Vuex
+    ...mapState(['user']), // Retrieves logged-in user from Vuex
     loggedInUser () {
-      return this.user // Simplifie l'accès aux données de l'utilisateur
+      return this.user // Simplify access to user data
     }
   },
   watch: {
@@ -124,7 +124,7 @@ export default {
       immediate: true,
       handler () {
         if (this.loggedInUser) {
-          this.fetchTasks() // Rafraîchir les tâches dès qu'on a l'utilisateur
+          this.fetchTasks() // Refresh tasks as soon as you have the user
         }
       }
     }
@@ -134,11 +134,11 @@ export default {
       this.showSideBar = !this.showSideBar
     },
     fetchTasks () {
-      if (!this.loggedInUser) return // S'assure qu'on a un utilisateur connecté
+      if (!this.loggedInUser) return // Ensures you have a logged-in user
 
       DestinationDataService.getAll()
         .then(response => {
-          // Filtre les tâches pour ne garder que celles créées par l'utilisateur connecté
+          // Filter tasks to keep only those created by the logged-in user
           const userTasks = response.data.filter(d => d.userId === this.loggedInUser.id)
 
           this.task.todo = userTasks.filter(d => d.status === 'todo')

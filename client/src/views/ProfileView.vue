@@ -1,7 +1,6 @@
 <template>
       <HeroHeader/>
       <div class="bg-montreal p-8 rounded-md shadow-md">
-        <!-- Peut-être créer un composant pour cette partie -->
          <UserProfile/>
       </div>
       <span class="mt-2 ml-2 text-3xl font-bold text-black block">Your trips :</span>

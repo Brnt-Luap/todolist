@@ -1,10 +1,10 @@
 <template>
   <div v-for="item in completedDestinations" :key="item.id" class="flex items-center space-x-4 bg-white p-2 rounded">
     <div class="flex items-center space-x-4 p-4 bg-gray-100 rounded-md shadow-md">
-      <!-- Affichage du drapeau si le pays est défini -->
+      <!-- Flag display if country is set -->
       <img v-if="item.country" :src="getFlagImage(item.country)" alt="Flag" class="rounded-md w-[200px] h-[130px]">
       <div>
-        <!-- Affichage de la ville, du pays et des dates -->
+        <!-- City, country and date display -->
         <h2 class="text-lg font-semibold">
           {{ item.city }} <span v-if="item.country">- {{ item.country }}</span>
         </h2>
@@ -14,7 +14,7 @@
           </span>
         </p>
 
-        <!-- Section modifiable des lieux visités -->
+        <!-- Editable section of visited places -->
         <p class="text-gray-700 font-medium">Places visited:
           <span v-if="!item.editingPlace">
             {{ item.place }}
@@ -31,7 +31,7 @@
           </span>
         </p>
 
-        <!-- Section notation -->
+        <!-- Rating section -->
         <div class="flex items-center">
           <span v-if="!item.editingRate">
             <div class="flex items-center space-x-1">
@@ -68,7 +68,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(['user']), // Récupère l'utilisateur connecté depuis Vuex
+    ...mapState(['user']), // Retrieves logged-in user from Vuex
     loggedInUser () {
       return this.user
     },
@@ -119,13 +119,13 @@ export default {
         })
     },
     fetchDestinations () {
-      if (!this.loggedInUser) return console.warn('Utilisateur non connecté')
+      if (!this.loggedInUser) return console.warn('User not logged in')
 
       DestinationDataService.getAll()
         .then(response => {
           this.destinations = response.data.filter(d => d.userId === this.loggedInUser.id)
         })
-        .catch(error => console.error('Erreur lors du chargement des destinations:', error))
+        .catch(error => console.error('Error loading destinations.', error))
     }
   },
   watch: {
